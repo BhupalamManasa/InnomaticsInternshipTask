@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Budget Tracker</title>
+    </head>
+    <style>
+        h1{text-align: center;}
+        h2{text-align: center;}
+        h3{text-align: center;} 
+        p{text-align: center;}
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+        #Sec4 {
+            text-align: center;  
+        }
+        
+        iframe {
+            display: inline-block; 
+            margin: 0 auto; 
+        }
+    </style>
+    <body>
+        <h1>Personal Budget Tracker</h1>
+        <h2 class="text-center">Welcome to the Personal Budget Tracker</h2>
+        <p> A personal expense tracker is a tool that helps users monitor their personal spending to improve their financial management</p>
+        <div class="nav-links">
+            <a href="#sec1">Add Income/Expenses</a>
+            <a href="#sec2">Budget Summary</a>
+            <a href="#Sec4">Budgeting Reasource</a>
+        </div>
+        <p>Hey!!, this budget tracker helps you to plan and manage your monthly budget,</p>
+        <p>according to your income and expenses. You can add, edit, and delete your entries.</p>
+        <p>You can also view your budget summary.</p>
+        <h3>Add New Data Entry</h3>
+        <div id="sec1">
+            <form id="budgetForm" align="center">
+                <a>Amount:</a>
+                <input type="number" id="Amount" required>
+                <br><br>
+                <a>Category:</a>
+                <select id="Category" required>
+                    <option>Food</option>
+                    <option>Grocery</option>
+                    <option>Transport</option>
+                    <option>Shopping</option>
+                    <option>Savings</option>
+                    <option>Utilities</option>
+                </select>
+                <br><br>
+                <a>Description:</a>
+                <input type="text" id="Description" required>
+                <br><br>
+                <a>Date:</a>
+                <input type="date" id="Date" required>
+                <br><br>
+                <a>Type:</a>
+                <label>
+                <input type="radio" name ="Type" value="Income" required> Income
+                </label><br>
+                <label>
+                <input type="radio" name="Type" value="Expenditure" required> Expenditure
+                </label><br><br>
+                <button type="submit">Add Entry</button>
+            </form>
+        </div>
+
+        <div id="sec2">
+            <h3>Budget Summary</h3>
+            <table border="1" id="budgetTable" align="center">
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">Food</td>
+                    <td>$400</td>
+                    <td>This month food expenses</td>
+                    <td>31/01/2025</td>
+                    <td>Pending</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>$500</td>
+                    <td>This month food expenses</td>
+                    <td>31/12/2024</td>
+                    <td>Completed</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Shopping</td>
+                    <td>$250</td>
+                    <td>Shopping expenses</td>
+                    <td>31/11/2024</td>
+                    <td>Completed</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>$150</td>
+                    <td>Last month shopping expenses</td>
+                    <td>31/12/2024</td>
+                    <td>Completed</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>$350</td>
+                    <td>This month shopping expenses</td>
+                    <td>31/01/2025</td>
+                    <td>Pending</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Groceries</td>
+                    <td>$100</td>
+                    <td>This month Groceries expenses</td>
+                    <td>01/02/2025</td>
+                    <td>Pending</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Savings</td>
+                    <td>$800</td>
+                    <td>This month savings</td>
+                    <td>01/02/2025</td>
+                    <td>Completed</td>
+                    <td><button type="submit">Edit</button>
+                        <button type="submit">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="Sec4">
+            <h2> Budgeting Resouces</h2>
+            <iframe width="706" height="397" src="https://www.youtube.com/embed/5UDGTpzATxE" title="Do This EVERY Time You Get Paid (2025 Paycheck Routine)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <hr style="border: 0.2px solid black; width: 90%; margin: 20px auto;">
+    </body>
+    <script>
+        document.getElementById('budgetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let amount = document.getElementById('Amount').value;
+            let category = document.getElementById('Category').value;
+            let description = document.getElementById('Description').value;
+            let date = document.getElementById('Date').value;
+            let type = document.querySelector('input[name="Type"]:checked').value;
+            let table = document.getElementById('budgetTable');
+            let newRow = table.insertRow();
+            newRow.innerHTML = `<td>${category}</td><td>$${amount}</td><td>${description}</td><td>${date}</td><td>Pending</td><td><button type="button">Edit</button>  <button type="button">Delete</button></td>`;
+            document.getElementById('budgetForm').reset();
+        });
+
+    </script>
+    <footer>
+        <h3> Personal Budget Tracker - Version 1.0</h3>
+        <a href="#">Privacy Policy</a> |
+        <a href="#"> Terms and Conditions</a> | 
+        <a href="https://www.linkedin.com/in/manasa-bhupalam-127118270/">Manasa IN1255155</a>
+    </footer>
+</html>
