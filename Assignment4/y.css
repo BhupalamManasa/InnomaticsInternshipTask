@@ -1,0 +1,211 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('https://img.freepik.com/premium-photo/toy-shopping-cart-with-boxes-credit-card-with-copy-space_339191-197.jpg?semt=ais_hybrid');
+}
+
+header {
+    position: fixed;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    width: 100%;
+    z-index: 1000; /* Ensure the header stays above everything else */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#cartButton {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Product List */
+#productList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    gap: 30px;
+    padding: 20px;
+    transition: opacity 0.3s ease; /* Smooth opacity transition */
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item img {
+    width: 100%;
+    height: 60%;
+}
+
+.product-item h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+.product-item button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 80%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effect for Product Items */
+.product-item:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-item button:hover {
+    background-color: #45a049; 
+}
+
+/* Cart Section Styles */
+#cartSection {
+    position: fixed;
+    top: 0;
+    right: -330px; /* Start off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-left: 2px solid #ccc;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    z-index: 2000; /* Ensure the cart overlays the product list */
+}
+
+#cartSection.show {
+    right: 0; /* Slide cart into view */
+}
+
+.cart-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+}
+
+.cart-item button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item .plus,
+.cart-item .minus {
+    background-color: #4CAF50;
+}
+
+.cart-item button:hover {
+    background-color: #e53935; /* Darker red on hover for remove button */
+}
+
+.cart-item .plus:hover,
+.cart-item .minus:hover {
+    background-color: #388e3c; /* Darker green for plus/minus buttons */
+}
+
+/* Cart Button Hover Effect */
+#cartButton:hover {
+    color: #ffeb3b; /* Change icon color on hover */
+}
+
+/* Cart Display */
+#totalPrice {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#emptyCartButton {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#emptyCartButton:hover {
+    background-color: #e53935; /* Darker red when hovering */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #cartSection {
+        right: 0;
+        bottom: -300px;
+        width: 100%;
+        height: 300px;
+    }
+
+    #cartSection.show {
+        bottom: 0;
+    }
+
+    /* Change grid layout for smaller screens */
+    #productList {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Change to 1 item per row on very small screens */
+    #productList {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Apply opacity to product list when cart is open */
+body.cart-open #productList {
+    opacity: 0.3; /* Dim the background when cart is open */
+    transition: opacity 0.3s ease;
+}

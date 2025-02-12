@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝔼-ℂ𝕠𝕞𝕞𝕖𝕣𝕔𝕖</title>
+  <link rel="stylesheet" href="y.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="https://thumbs.dreamstime.com/b/bright-neon-sign-displaying-word-e-commerce-gray-background-bright-neon-sign-displaying-word-e-commerce-gray-331059408.jpg" alt="Logo" class="logo" height="40px" width="100px"> 
+      <ul>
+        <li><a href="#" onclick="filterCategory('All')">All</a></li>
+        <li><a href="#" onclick="filterCategory('Mobiles')">Mobiles</a></li>
+        <li><a href="#" onclick="filterCategory('Laptops')">Laptops</a></li>
+        <li><a href="#" onclick="filterCategory('Accessories')">Accessories</a></li>
+        <li><a href="#" onclick="filterCategory('Food')">Food</a></li>
+        <li><a href="#" onclick="filterCategory('Electronics')">Electronics</a></li>
+        <li><input type="text" placeholder="Search products..." id="searchInput"></li>
+        <li><button id="cartButton" class="cart-button">🛒</button></li>
+      </ul>
+    </nav>
+  </header>
+<br><br><br><br><br>
+  <main>
+    <section id="productList" class="product-list">
+      <!-- Products will be displayed dynamically here -->
+    </section>
+  </main>
 
+  <!-- Cart Section -->
+  <section id="cartSection" class="cart-section">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button id="closeCartButton" class="close-cart-button">X</button>
+    </div>
+    <div id="cartItems" class="cart-items">
+      <!-- Cart items will be dynamically displayed here -->
+    </div>
+    <div class="cart-footer">
+      <p>Total: <span id="totalPrice">0</span></p>
+      <button id="emptyCartButton" class="empty-cart-button">Empty Cart</button>
+    </div>
+  </section>
+
+  <script src="z.js"></script>
+</body>
+</html>
